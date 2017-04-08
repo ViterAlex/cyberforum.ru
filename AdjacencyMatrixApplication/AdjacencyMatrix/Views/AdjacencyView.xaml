@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="AdjacencyMatrix.Views.AdjacencyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ext="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
+             xmlns:dg2D="clr-namespace:DataGrid2DLibrary;assembly=DataGrid2DLibrary"
+             xmlns:m="clr-namespace:AdjacencyMatrix.Models"
+             xmlns:viewModels="clr-namespace:AdjacencyMatrix.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.DataContext>
+        <viewModels:AdjacencyViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <ext:ZoomControl>
+            <m:GraphLayout Graph="{Binding Model}"
+                           LayoutAlgorithmType="EfficientSugiyama"
+                           OverlapRemovalAlgorithmType="FSA"
+                           HighlightAlgorithmType="Simple" />
+        </ext:ZoomControl>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Матрица смежности" />
+            </StackPanel>
+            <dg2D:DataGrid2D ItemsSource2D="{Binding AdjacencyMatrix}" />
+            <Button Content="Обновить"
+                    Command="{Binding UpdateGraphCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
+
+
+
+
+
+
+
