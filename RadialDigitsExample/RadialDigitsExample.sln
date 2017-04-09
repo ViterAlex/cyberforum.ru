@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadialDigitsExample", "RadialDigitsExample.csproj", "{F81D1ADD-66E9-47AE-8537-2BC4B06CCD2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorUITypeEditor", "ColorUITypeEditor\ColorUITypeEditor.csproj", "{CCF73764-CF39-4ACF-94BE-CD912B9DC6F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F81D1ADD-66E9-47AE-8537-2BC4B06CCD2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81D1ADD-66E9-47AE-8537-2BC4B06CCD2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F81D1ADD-66E9-47AE-8537-2BC4B06CCD2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81D1ADD-66E9-47AE-8537-2BC4B06CCD2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF73764-CF39-4ACF-94BE-CD912B9DC6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF73764-CF39-4ACF-94BE-CD912B9DC6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF73764-CF39-4ACF-94BE-CD912B9DC6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF73764-CF39-4ACF-94BE-CD912B9DC6F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
