@@ -1,0 +1,56 @@
+﻿<Window x:Class="SentenceStatistic.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:SentenceStatistic.ViewModels"
+        xmlns:local="clr-namespace:SentenceStatistic"
+        Title="Статистика предложения"
+        Height="400"
+        Width="800">
+    <Window.Resources>
+        <local:SentenceKindConverter x:Key="SentenceKindConverter" />
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    Margin="5">
+            <RadioButton Name="RadioButton"
+                         IsChecked="{Binding IsRandom}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Случайный набор из" />
+                    <TextBox Text="{Binding Length}"
+                             IsEnabled="{Binding ElementName=RadioButton, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}"
+                             MinWidth="50"
+                             MaxWidth="100"
+                             VerticalContentAlignment="Center" />
+                    <Label Content="символов" />
+                </StackPanel>
+            </RadioButton>
+            <RadioButton Content="Ввести предложение" />
+        </StackPanel>
+        <TextBox Grid.Row="1"
+                 TextWrapping="Wrap"
+                 Margin="5" 
+                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 IsReadOnly="{Binding IsRandom}" />
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="2">
+            <Label Content="{Binding Answer, Converter={StaticResource SentenceKindConverter}, Mode=OneWay}"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Bottom" />
+            <Label Content="{Binding UppersCount}"
+                   ContentStringFormat="Заглавных букв: {0}" />
+            <Label Content="{Binding LowersCount}"
+                   ContentStringFormat="Строчных букв: {0}" />
+        </StackPanel>
+    </Grid>
+</Window>
