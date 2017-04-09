@@ -1,0 +1,44 @@
+﻿<Window x:Class="ExperienceCounter.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ExperienceCounter.ViewModels"
+        xmlns:conv="clr-namespace:ExperienceCounter.Converters"
+        Title="Вычисление стажа"
+        Height="200"
+        Width="400">
+
+    <Window.Resources>
+        <conv:DateDiffConverter x:Key="DateSpanConverter" />
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin"
+                    Value="3" />
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Начало трудовой деятельности:" />
+            <DatePicker SelectedDate="{Binding ExperienceStart}"
+                        SelectedDateFormat="Long" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Окончание трудовой деятельности:" />
+            <DatePicker SelectedDate="{Binding ExperienceEnd}"
+                        SelectedDateFormat="Long" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Ваш стаж:" />
+            <Label>
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource DateSpanConverter}">
+                        <Binding Path="ExperienceStart" />
+                        <Binding Path="ExperienceEnd" />
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+        </StackPanel>
+    </StackPanel>
+</Window>
+
