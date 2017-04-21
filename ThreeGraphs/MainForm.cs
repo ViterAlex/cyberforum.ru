@@ -99,8 +99,7 @@ namespace ThreeGraphs
                 _bmp.Dispose();
                 if (_days <= 0) return;
             }
-            var maxX = _points.Select(l => l.Max(p => p.X)).Max();
-            _bmp = new Bitmap((int)maxX, pictureBox1.Height);
+            _bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             //Максимальное значение в трёх графиках по Y
             var maxY = _points.Select(l => l.Max(p => p.Y)).Max();
             var minY = _points.Select(l => l.Min(p => p.Y)).Min();
@@ -108,12 +107,12 @@ namespace ThreeGraphs
 
             using (var g = Graphics.FromImage(_bmp))
             {
-                g.TranslateTransform(0, _bmp.Height / 2f);
+                g.TranslateTransform(-_points[0].Skip(hScrollBar1.Value).ToList()[0].X, _bmp.Height / 2f);
                 g.ScaleTransform(1, scaleY);
 
-                g.DrawCurve(Color.Red.Pen(1 / scaleY), _points[0].ToArray());
-                g.DrawCurve(Color.Green.Pen(1 / scaleY), _points[1].ToArray());
-                g.DrawCurve(Color.Blue.Pen(1 / scaleY), _points[2].ToArray());
+                g.DrawCurve(Color.Red.Pen(1 / scaleY), _points[0].Skip(hScrollBar1.Value).ToArray());
+                g.DrawCurve(Color.Green.Pen(1 / scaleY), _points[1].Skip(hScrollBar1.Value).ToArray());
+                g.DrawCurve(Color.Blue.Pen(1 / scaleY), _points[2].Skip(hScrollBar1.Value).ToArray());
             }
         }
 
@@ -181,7 +180,7 @@ namespace ThreeGraphs
             //Смещение графика по скролу
             var scroll = hScrollBar1.Visible ? hScrollBar1.Value : 0;
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.DrawImage(_bmp, -scroll * ScaleX, 0);
+            e.Graphics.DrawImage(_bmp, 0, 0);
             DrawAxis(e.Graphics);
         }
     }
