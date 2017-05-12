@@ -33,6 +33,8 @@
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.mapDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mapDbDataSet = new GmapDgvSample.MapDbDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -46,21 +48,20 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.openDbButton = new System.Windows.Forms.ToolStripButton();
             this.updateDbButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.exportToWord = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.latDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mapDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mapDbDataSet = new GmapDgvSample.MapDbDataSet();
             this.mapDataTableAdapter = new GmapDgvSample.MapDbDataSetTableAdapters.MapDataTableAdapter();
-            this.showMapButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapDbDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapDbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigator1
@@ -84,7 +85,8 @@
             this.toolStripSeparator1,
             this.openDbButton,
             this.updateDbButton,
-            this.showMapButton});
+            this.toolStripButton1,
+            this.exportToWord});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -109,6 +111,16 @@
             // 
             this.bindingSource1.DataMember = "MapData";
             this.bindingSource1.DataSource = this.mapDbDataSetBindingSource;
+            // 
+            // mapDbDataSetBindingSource
+            // 
+            this.mapDbDataSetBindingSource.DataSource = this.mapDbDataSet;
+            this.mapDbDataSetBindingSource.Position = 0;
+            // 
+            // mapDbDataSet
+            // 
+            this.mapDbDataSet.DataSetName = "MapDbDataSet";
+            this.mapDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -211,6 +223,25 @@
             this.updateDbButton.Text = "Обновить базу";
             this.updateDbButton.Click += new System.EventHandler(this.updateDbButton_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(94, 22);
+            this.toolStripButton1.Text = "Показать карту";
+            // 
+            // exportToWord
+            // 
+            this.exportToWord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.exportToWord.Image = ((System.Drawing.Image)(resources.GetObject("exportToWord.Image")));
+            this.exportToWord.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToWord.Name = "exportToWord";
+            this.exportToWord.Size = new System.Drawing.Size(40, 22);
+            this.exportToWord.Text = "Word";
+            this.exportToWord.Click += new System.EventHandler(this.exportToWord_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
@@ -253,29 +284,9 @@
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // mapDbDataSetBindingSource
-            // 
-            this.mapDbDataSetBindingSource.DataSource = this.mapDbDataSet;
-            this.mapDbDataSetBindingSource.Position = 0;
-            // 
-            // mapDbDataSet
-            // 
-            this.mapDbDataSet.DataSetName = "MapDbDataSet";
-            this.mapDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // mapDataTableAdapter
             // 
             this.mapDataTableAdapter.ClearBeforeFill = true;
-            // 
-            // showMapButton
-            // 
-            this.showMapButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.showMapButton.Image = ((System.Drawing.Image)(resources.GetObject("showMapButton.Image")));
-            this.showMapButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.showMapButton.Name = "showMapButton";
-            this.showMapButton.Size = new System.Drawing.Size(94, 22);
-            this.showMapButton.Text = "Показать карту";
-            this.showMapButton.Click += new System.EventHandler(this.showMapButton_Click);
             // 
             // DgvForm
             // 
@@ -291,9 +302,9 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapDbDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapDbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +336,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn latDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripButton showMapButton;
+        private System.Windows.Forms.ToolStripButton exportToWord;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
