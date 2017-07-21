@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Globalization;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace ThreeGraphs
@@ -14,11 +12,11 @@ namespace ThreeGraphs
         #region Свойства
 
         private readonly List<List<PointF>> _points = new List<List<PointF>>
-                                                      {
-                                                          new List<PointF>(),
-                                                          new List<PointF>(),
-                                                          new List<PointF>()
-                                                      };
+                                                    {
+                                                        new List<PointF>(),
+                                                        new List<PointF>(),
+                                                        new List<PointF>()
+                                                    };
 
         private Bitmap _bmp;
 
@@ -32,7 +30,7 @@ namespace ThreeGraphs
             {
                 _days = value;
                 hScrollBar1.Visible = _days > 60;
-                hScrollBar1.Maximum = value - 60;
+                hScrollBar1.Maximum = value - (hScrollBar1.Visible ? 60 : 0);
             }
         }
 
@@ -51,6 +49,7 @@ namespace ThreeGraphs
         private void birthDateDtp_ValueChanged(object sender, EventArgs e)
         {
             Days = (DateTime.Now - birthDateDtp.Value).Days;
+            _bmp = null;
             GetPoints();
         }
 
@@ -97,8 +96,8 @@ namespace ThreeGraphs
             if (_bmp != null)
             {
                 _bmp.Dispose();
-                if (_days <= 0) return;
             }
+            if (_days <= 0) return;
             _bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             //Максимальное значение в трёх графиках по Y
             var maxY = _points.Select(l => l.Max(p => p.Y)).Max();
@@ -177,8 +176,6 @@ namespace ThreeGraphs
             if (_bmp == null)
                 return;
             DrawImage();
-            //Смещение графика по скролу
-            var scroll = hScrollBar1.Visible ? hScrollBar1.Value : 0;
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.DrawImage(_bmp, 0, 0);
             DrawAxis(e.Graphics);
