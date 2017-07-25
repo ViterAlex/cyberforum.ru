@@ -1,10 +1,10 @@
 ﻿Imports System.Windows.Forms
-Imports Exporters
 
 Public Class CsvExporter
-    Implements IExport
+    Inherits ExporterBase
 
-    Public Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False) Implements IExport.Save
-        Throw New NotImplementedException()
+    Public Overrides Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False)
+        MyBase.Save(path, lvw, exportHeaders)
     End Sub
+
 End Class

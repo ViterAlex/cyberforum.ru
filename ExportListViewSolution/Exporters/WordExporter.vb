@@ -4,7 +4,7 @@ Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
 
 Public Class WordExporter
-    Implements IExport
+    Inherits ExporterBase
     'Границы таблицы
     Private ReadOnly _tableBorders As BorderType() =
     {
@@ -51,20 +51,17 @@ Public Class WordExporter
             .Space = 0
         }
     }
-    Private _listView As ListView
-    Private _exportHeaders As Boolean
     ''' <summary>
     ''' Экспорт в документ docx
     ''' </summary>
     ''' <param name="path">Путь к документу</param>
     ''' <param name="lvw">ListView, который нужно экспортировать</param>
     ''' <param name="exportHeaders">Нужно ли экспортировать заголовки</param>
-    Public Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False) Implements IExport.Save
-        _listView = lvw
-        _exportHeaders = exportHeaders
+
+    Public Overrides Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False)
+        MyBase.Save(path, lvw, exportHeaders)
         CreatePackage(path)
-    End Sub
-    'Создание документа
+    End Sub    'Создание документа
     Private Sub CreatePackage(filePath As String)
         Using package As WordprocessingDocument = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document)
             CreateParts(package)

@@ -2,23 +2,17 @@
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml
 Imports DocumentFormat.OpenXml.Spreadsheet
-Imports X15ac = DocumentFormat.OpenXml.Office2013.ExcelAc
-Imports X15 = DocumentFormat.OpenXml.Office2013.Excel
-Imports X14 = DocumentFormat.OpenXml.Office2010.Excel
 Imports System.Text
 Imports System.Drawing
 
 Public Class ExcelExporter
-    Implements IExport
-    Private _listView As ListView
-    Private _exportHeaders As Boolean
+    Inherits ExporterBase
 
-
-    Public Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False) Implements IExport.Save
-        _listView = lvw
-        _exportHeaders = exportHeaders
+    Public Overrides Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False)
+        MyBase.Save(path, lvw, exportHeaders)
         CreatePackage(path)
     End Sub
+
 
     Public Sub CreatePackage(filePath As String)
         Using package As SpreadsheetDocument = SpreadsheetDocument.Create(filePath, SpreadsheetDocumentType.Workbook)
@@ -99,6 +93,10 @@ Public Class ExcelExporter
         Dim colMaxTextLen = New Single(_listView.Columns.Count - 1) {}
         'Счётчик строк и столбцов
         Dim rowCounter, colCounter As Integer
+        If _exportHeaders Then
+            rowCounter = AddHeader(shData)
+        End If
+
         For Each lvi As ListViewItem In _listView.Items
             rowCounter += 1
             colCounter = 0
@@ -132,6 +130,22 @@ Public Class ExcelExporter
         Next
 
     End Sub
+
+    'Добавление строки с заголовками
+    Private Function AddHeader(shData As SheetData) As Integer
+        Dim r = shData.AppendChild(New Row() With {
+            .RowIndex = 1
+            })
+        For Each ch As ColumnHeader In _listView.Columns
+            r.AppendChild(New Cell() With {
+                    .CellReference = GetColumnCaption(1, ch.Index),
+                    .DataType = CellValues.InlineString
+                }) _
+                .AppendChild(New InlineString()).Append(New Text(ch.Text))
+        Next
+
+        Return 1
+    End Function
 
     Private Sub GenerateSharedStringTablePartContent(sharedStringTablePart1 As SharedStringTablePart)
         sharedStringTablePart1.SharedStringTable = New SharedStringTable()

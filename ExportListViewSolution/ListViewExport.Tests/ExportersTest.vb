@@ -52,7 +52,7 @@ Public Class ExportersTest
     Public Sub ExcelExporterTest()
         Try
             exporter = New ExcelExporter()
-            exporter.Save("excelExport.xlsx", _listView)
+            exporter.Save("excelExport.xlsx", _listView, True)
             Debug.WriteLine(Path.GetFullPath("excelExport.xlsx"))
         Catch ex As Exception
             Assert.Fail(ex.Message)
