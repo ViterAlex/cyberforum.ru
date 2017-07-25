@@ -1,7 +1,7 @@
 ﻿Imports System.Windows.Forms
-Imports Expoters
+Imports Exporters
 
-Public Class TxtExporter
+Public Class HtmlExporter
     Implements IExport
 
     Public Sub Save(path As String, lvw As ListView, Optional exportHeaders As Boolean = False) Implements IExport.Save

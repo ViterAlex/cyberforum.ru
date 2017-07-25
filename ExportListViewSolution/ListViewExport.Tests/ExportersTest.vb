@@ -1,12 +1,12 @@
 ﻿Imports System.IO
-Imports System.Text
 Imports System.Windows.Forms
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Validation
-Imports Expoters
+Imports Exporters
 
 <TestClass()>
-Public Class ListViewExportTest
+Public Class ExportersTest
+
     Private exporter As IExport
     Private Shared _listView As ListView
 

@@ -85,7 +85,7 @@
     <Import Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListViewExportTest.vb" />
+    <Compile Include="ExportersTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -122,9 +122,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Expoters\Expoters.vbproj">
+    <ProjectReference Include="..\Exporters\Exporters.vbproj">
       <Project>{cd8be633-3eb8-41ed-9798-98b59976ba25}</Project>
-      <Name>Expoters</Name>
+      <Name>Exporters</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

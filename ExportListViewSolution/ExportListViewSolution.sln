@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExportListView", "ExportListView\ExportListView.vbproj", "{76744FF3-A19B-4FA0-8DAC-B2FD88FA9A92}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ListViewExport.Tests", "ListViewExport.Tests\ListViewExport.Tests.vbproj", "{D8B3D5CF-35DD-4AE2-88AB-9805E089B648}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Expoters", "Expoters\Expoters.vbproj", "{CD8BE633-3EB8-41ED-9798-98B59976BA25}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Exporters", "Exporters\Exporters.vbproj", "{CD8BE633-3EB8-41ED-9798-98B59976BA25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{76744FF3-A19B-4FA0-8DAC-B2FD88FA9A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76744FF3-A19B-4FA0-8DAC-B2FD88FA9A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76744FF3-A19B-4FA0-8DAC-B2FD88FA9A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76744FF3-A19B-4FA0-8DAC-B2FD88FA9A92}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8B3D5CF-35DD-4AE2-88AB-9805E089B648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8B3D5CF-35DD-4AE2-88AB-9805E089B648}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8B3D5CF-35DD-4AE2-88AB-9805E089B648}.Release|Any CPU.ActiveCfg = Release|Any CPU
